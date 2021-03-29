@@ -1,0 +1,47 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+{% block 1 %} 
+
+<div class="section" class="text_align_center heading_main">
+    <div class="container">
+        <div class="row" style="margin-left: 5cm;">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <h1 style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-size: xx-large"><u><b>Creator's Profile</b></u></h1>
+                <hr>
+                <h1 style="font-family: Georgia, 'Times New Roman', Times, serif;"><i>Name :-  </i><b>{{ profile.Name }}</b></h1><br>
+                <h1 style="font-family: Georgia, 'Times New Roman', Times, serif;"><i>Email Address :-  </i><b>{{ profile.Email }}</b></h1><br>
+                <h1 style="font-family: Georgia, 'Times New Roman', Times, serif;"><i>Date of Birth :-  </i><b>{{ profile.Date_Of_Birth }}</b></h1>
+                <h1 style="font-family: Georgia, 'Times New Roman', Times, serif;"><i>City  :-  </i><b>{{ profile.City }}</b></h1>
+                <h1 style="font-family: Georgia, 'Times New Roman', Times, serif;"><i>State :-  </i><b>{{ profile.State }}</b></h1>
+                <h1 style="font-family: Georgia, 'Times New Roman', Times, serif;"><i>Education Qualification :-  </i><b>{{ profile.Educational_Qualification }}</b></h1>
+                <h1 style="font-family: Georgia, 'Times New Roman', Times, serif;"><i>Rating (Out of 5) :-  </i><b>{{ profile.rating }}</b></h1>
+                <h1 style="font-family: Georgia, 'Times New Roman', Times, serif;"><i>Verified Content Creator :-  </i><b>@Yes</b></h1>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="col-md-300">
+                    <div class="full">
+                        <br>
+                        <img class="img-responsive" src= {{ pic }} alt="#" />
+                        <hr>
+                        <h1 style="font-family: Georgia, 'Times New Roman', Times, serif;"><u>Creator's Photo</u></h1>
+                    </div>
+                </div>
+            </div>
+            {% if user.is_authenticated %}    
+            <div class="form-group">
+                {% if foll == 'f' %}
+                <a href="{% url 'follow' profile.creatorusr.id %}"><button class="btn btn-outline-success" type="submit">Follow Creator !</button></a>
+                {% else %}
+                <a href="{% url 'unfollow' profile.creatorusr.id %}"><button class="btn btn-outline-danger" type="submit">UnFollow Creator !</button></a>
+                {% endif %}
+            </div>
+            {% else %}
+            <div class="form-group">
+                <a href='#'><button class="btn btn-outline-info" type="submit">Login to Follow !</button></a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock 1 %}
