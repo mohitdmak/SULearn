@@ -67,7 +67,10 @@
                         <li><a class="nav-link active" href="{% url 'home' %}">Home</a></li>
                         <li><a class="nav-link" href="{% url 'about' %}">About</a></li>
                         <li><a class="nav-link" href="{% url 'allcourses' %}">Courses</a></li>
+                        <li><a class="nav-link" href="{% url 'search' %}">Search By Tag</a></li>
 						{% if user.is_authenticated %}
+                        <li><a class="nav-link" href="{% url 'mycourses' %}">My courses</a></li>
+                        <li><a class="nav-link" href="{% url 'seeprofile' user.id %}">My Profile</a></li>
 						<form method="post" action="{% url 'account_logout' %}">
 							{% csrf_token %}
 							{% if redirect_field_value %}
@@ -80,12 +83,6 @@
         				<button style="height: 35px;">{% include "socialaccount/snippets/provider_list.html" with process="login" %}</button>
 						{% endif %}
                     </ul>
-                </div>
-                <div class="search-box">
-                    <input type="text" class="search-txt" placeholder="Search">
-                    <a class="search-btn">
-                        <img src="{% static 'Home/images/search_icon.png' %}" alt="#" />
-                    </a>
                 </div>
             </div>
         </nav>
@@ -145,31 +142,31 @@
 <!-- End Banner -->
 
     {% block 1 %}
-    
+
 
     {% endblock 1 %}
 
     <!-- Start Footer -->
     <footer class="footer-box">
         <div class="container">
-		
+
 		   <div class="row">
-		   
+
 		      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 			     <div class="footer_blog">
 				    <div class="full margin-bottom_30">
 					 </div>
 					 <div class="full white_fonts">
-					    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip </p>
+					    <p>Hope you liked our work!
+					    Do visit back for learning any course you like!</p>
 					 </div>
 				 </div>
 			  </div>
-			  
+
 			  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 			       <div class="footer_blog footer_menu white_fonts">
 						    <h3>Quick links</h3>
-						    <ul> 
+						    <ul>
 							  <li><a href="https://www.linkedin.com/in/mohitdmak/">> Our Linkedin</a></li>
 							  <li><a href="https://github.com/mohitdmak/Coursera-lite">> Our Source Code</a></li>
 							  <li><a href="{% url 'home' %}">> Home</a></li>
@@ -177,7 +174,7 @@
 							</ul>
 						 </div>
 				 </div>
-			  
+
 			  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 				 <div class="footer_blog full white_fonts">
 						     <h3>Contact us</h3>
@@ -187,10 +184,10 @@
 							   <li><img src="{% static 'Home/images/i7.png' %}"><span>+12586954775</span></li>
 							 </ul>
 						 </div>
-					</div>	 
-			  
+					</div>
+
 		   </div>
-		
+
         </div>
     </footer>
     <!-- End Footer -->
@@ -227,7 +224,7 @@
 (function ($) {
 	$.fn.countTo = function (options) {
 		options = options || {};
-		
+
 		return $(this).each(function () {
 			// set options for current element
 			var settings = $.extend({}, $.fn.countTo.defaults, {
@@ -237,58 +234,58 @@
 				refreshInterval: $(this).data('refresh-interval'),
 				decimals:        $(this).data('decimals')
 			}, options);
-			
+
 			// how many times to update the value, and how much to increment the value on each update
 			var loops = Math.ceil(settings.speed / settings.refreshInterval),
 				increment = (settings.to - settings.from) / loops;
-			
+
 			// references & variables that will change with each update
 			var self = this,
 				$self = $(this),
 				loopCount = 0,
 				value = settings.from,
 				data = $self.data('countTo') || {};
-			
+
 			$self.data('countTo', data);
-			
+
 			// if an existing interval can be found, clear it first
 			if (data.interval) {
 				clearInterval(data.interval);
 			}
 			data.interval = setInterval(updateTimer, settings.refreshInterval);
-			
+
 			// initialize the element with the starting value
 			render(value);
-			
+
 			function updateTimer() {
 				value += increment;
 				loopCount++;
-				
+
 				render(value);
-				
+
 				if (typeof(settings.onUpdate) == 'function') {
 					settings.onUpdate.call(self, value);
 				}
-				
+
 				if (loopCount >= loops) {
 					// remove the interval
 					$self.removeData('countTo');
 					clearInterval(data.interval);
 					value = settings.to;
-					
+
 					if (typeof(settings.onComplete) == 'function') {
 						settings.onComplete.call(self, value);
 					}
 				}
 			}
-			
+
 			function render(value) {
 				var formattedValue = settings.formatter.call(self, value, settings);
 				$self.html(formattedValue);
 			}
 		});
 	};
-	
+
 	$.fn.countTo.defaults = {
 		from: 0,               // the number the element should start at
 		to: 0,                 // the number the element should end at
@@ -299,7 +296,7 @@
 		onUpdate: null,        // callback method for every time the element is updated
 		onComplete: null       // callback method for when the element finishes updating
 	};
-	
+
 	function formatter(value, settings) {
 		return value.toFixed(settings.decimals);
 	}
@@ -312,10 +309,10 @@ jQuery(function ($) {
 	  return value.toFixed(options.decimals).replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
 	}
   });
-  
+
   // start all the timers
-  $('.timer').each(count);  
-  
+  $('.timer').each(count);
+
   function count(options) {
 	var $this = $(this);
 	options = $.extend({}, options || {}, $this.data('countToOptions') || {});

@@ -13,7 +13,12 @@
                 <h1 style="font-family: Georgia, 'Times New Roman', Times, serif;"><i>City  :-  </i><b>{{ profile.City }}</b></h1>
                 <h1 style="font-family: Georgia, 'Times New Roman', Times, serif;"><i>State :-  </i><b>{{ profile.State }}</b></h1>
                 <h1 style="font-family: Georgia, 'Times New Roman', Times, serif;"><i>Verified Content Learner :-  </i><b>@Yes</b></h1>
-            </div>
+            <br><hr><br>
+            <h1 style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-size: xx-large"><u><b>Courses Enrolled :-</b></u></h1>
+            {% for class in profile.learnerusr.classes.all %}
+            <h1 style="font-family: Georgia, 'Times New Roman', Times, serif;"><b><i>{{ class.courses.Course_Name }} ~ </i></b><br> Category : {{ class.courses.Course_Tag }}<br><br><b><u><a href = "{% url 'show-course' class.courses.id %}"><button class="btn btn-outline-success" type="submit">Learn More</button> </a></u></b></h1><hr><br>
+            {% endfor %}
+        </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="col-md-300">
                     <div class="full">

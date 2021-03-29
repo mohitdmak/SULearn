@@ -32,10 +32,8 @@
                        <h2><span>Welcome To</span> Education</h2>
                     </div>
                     <div class="full">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                      <p>Hey welcome to the 'Lite' Coursera where everything is free!
+                      To learn more about this project, please go through the below link.</p>
                     </div>
                     <div class="full">
                        <a class="hvr-radial-out button-theme" href="{% url 'about' %}">About more</a>
@@ -51,7 +49,7 @@
     </div>
 </div>
 <!-- end section -->
-<!-- section 
+<!-- section
 <div class="section layout_padding">
     <div class="container">
         <div class="row">
@@ -64,7 +62,7 @@
             </div>
             <div class="col-md-4">
                 <div class="full blog_img_popular">
-                   <img class="img-responsive" src="{% static 'Home/images/p1.png' %}" alt="#" /> 
+                   <img class="img-responsive" src="{% static 'Home/images/p1.png' %}" alt="#" />
                    <h4>Financial Accounting</h4>
                 </div>
             </div>
@@ -99,15 +97,14 @@
                        <h2><span>Apply for Admission</h2>
                     </div>
                     <div class="full">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor 
-                      in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                      sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                      <p>To start using this app, You need to register yourself as either a Creator if your intention is to provide free courses,
+                      or a learner if you want free access to unlimited knowledge. Then register yourself under any course which you like.
+                      You can even search courses by their tags available.</p>
                     </div>
                     <div class="full">
                         <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><i><u> Register Below !</u></i></h3>
                        <button class="hvr-radial-out button-theme">{% include "socialaccount/snippets/provider_list.html" with process="login" %}</button>
-                  
+
                     </div>
                 </div>
             </div>
@@ -125,12 +122,10 @@
                        <h2><span>Reaserch Our Courses !</span></h2>
                     </div>
                     <div class="full">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-                      reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                      <p>To research the topics/fields on which courses on our platform are created, you can search for them by their tags.</p>
                     </div>
                     <div class="full">
-                       <a class="hvr-radial-out button-theme" href="#">Checkout Navbar!</a>
+                       <a class="hvr-radial-out button-theme" href="{% url 'search' %}">Search via Tags!</a>
                     </div>
                 </div>
             </div>
